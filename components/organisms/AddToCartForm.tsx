@@ -1,31 +1,21 @@
 import React from "react";
 import { ICraft } from "@/types";
-import { useAppDispatch } from "@/hooks";
 import { InputNumber, Button, Form } from "antd";
-import { addToCart } from "@/features/cart/cartSlice";
 
 interface IAddToCartFormProps {
   craft: ICraft | null;
+  handleAddToCart: (data: any) => void;
 }
 
-const AddToCartForm: React.FC<IAddToCartFormProps> = ({ craft }) => {
-  const dispatch = useAppDispatch();
-
-  const handleAddToCart = (data: any) => {
-    const { quantity } = data;
-
-    if (craft) {
-      dispatch(addToCart({ ...craft, quantity }));
-    }
-  };
-
+const AddToCartForm: React.FC<IAddToCartFormProps> = ({
+  craft,
+  handleAddToCart,
+}) => {
   return (
     <div>
       <p className="font-semibold text-4xl">{craft?.name}</p>
       <p className="text-sky-500 font-medium text-3xl">LKR {craft?.price}</p>
-      <p className="text-gray-500 text-sm">
-        {craft?.description.substring(0, 100)}
-      </p>
+      <p className="text-gray-500 text-sm">{craft?.description}</p>
       <Form
         onFinish={handleAddToCart}
         name="addToCarts"

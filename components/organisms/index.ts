@@ -12,6 +12,9 @@ import OrderDetailsCard from "./OrderDetailsCard";
 import LoginForm from "./LoginForm";
 import CraftForm from "./CraftForm";
 import CraftTable from "./CraftTable";
+import OrdersTable from "./OrdersTable";
+import OrderStats from "./OrderStats";
+import CraftSoldCountList from "./CraftSoldCountList";
 
 export {
   CustomerLayoutHeader,
@@ -28,4 +31,7 @@ export {
   LoginForm,
   CraftForm,
   CraftTable,
+  OrdersTable,
+  OrderStats,
+  CraftSoldCountList,
 };

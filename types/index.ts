@@ -23,7 +23,33 @@ export interface ICartState {
   totalPrice: number;
 }
 
+export interface IOrderItem {
+  _id: string;
+  craft: ICraft;
+  quantity: number;
+}
+
+export interface IOrder {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  deliveryAddress: string;
+  postalCode: string;
+  phoneNumber: string;
+  orderTotal: number;
+  orderItems: IOrderItem[];
+}
+
 export interface IOrderState {
   loading: boolean;
   error: string | null;
+  orders: IOrder[];
+  analytics: {
+    totalSales: number;
+    totalOrders: number;
+    totalCraftsSold: number;
+    craftsSoldCount: { name: string; quantity: number }[];
+    topFiveCraftsSold: { name: string; quantity: number }[];
+  };
 }

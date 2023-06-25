@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { CraftDetails, CartDrawer } from "@/components";
+import { addToCart, removeFromCart } from "@/features/cart/cartSlice";
 const { fetchCraftById } = require("@/features/craft/craftSlice");
 
 const Craft = () => {
@@ -27,14 +28,24 @@ const Craft = () => {
     setShowDrawer(false);
   };
 
+  const handleAddToCart = (data: any) => {
+    const { quantity } = data;
+    dispatch(addToCart({ ...craft, quantity }));
+  };
+
+  const removeCartItem = (id: string) => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <>
-      <CraftDetails craft={craft} />
+      <CraftDetails craft={craft} handleAddToCart={handleAddToCart} />
       <CartDrawer
         open={showDrawer}
         cartItems={cartItems}
         totalPrice={totalPrice}
         onClose={handleDrawerClose}
+        removeItem={removeCartItem}
       />
     </>
   );

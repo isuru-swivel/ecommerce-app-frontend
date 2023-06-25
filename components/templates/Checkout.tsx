@@ -1,8 +1,12 @@
-import { CheckoutForm, OrderDetailsCard } from "@/components";
-import { useAppSelector, useAppDispatch } from "@/hooks";
+import { message } from "antd";
+import { useRouter } from "next/navigation";
+import { clearCart } from "@/features/cart/cartSlice";
 import { addOrder } from "@/features/order/orderSlice";
+import { useAppSelector, useAppDispatch } from "@/hooks";
+import { CheckoutForm, OrderDetailsCard } from "@/components";
 
 const Checkout = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { cartItems, totalPrice } = useAppSelector((state) => state.cart);
 
@@ -20,7 +24,18 @@ const Checkout = () => {
       orderItems,
     };
 
-    dispatch(addOrder(payload));
+    dispatch(addOrder(payload))
+      .then((result) => {
+        if (result.meta.requestStatus === "fulfilled") {
+          dispatch(clearCart());
+          router.replace("/order/success");
+        } else {
+          return message.error(result.payload);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

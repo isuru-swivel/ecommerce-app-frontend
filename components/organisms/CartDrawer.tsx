@@ -1,14 +1,13 @@
 import React from "react";
+import Link from "next/link";
 import { ICartItem } from "@/types";
-import { useAppDispatch } from "@/hooks";
 import { CartDrawerItem } from "@/components";
 import { Drawer, Divider, Button, Empty } from "antd";
-import { removeFromCart } from "@/features/cart/cartSlice";
-import Link from "next/link";
 
 interface ICartDrawerProps {
   open: boolean;
   onClose: () => void;
+  removeItem: (id: string) => void;
   cartItems: ICartItem[];
   totalPrice: number;
 }
@@ -18,13 +17,8 @@ const CartDrawer: React.FC<ICartDrawerProps> = ({
   cartItems,
   onClose,
   totalPrice,
+  removeItem,
 }) => {
-  const dispatch = useAppDispatch();
-
-  const removeCartItem = (id: string) => {
-    dispatch(removeFromCart(id));
-  };
-
   return (
     <Drawer
       title="Shopping Cart"
@@ -40,7 +34,7 @@ const CartDrawer: React.FC<ICartDrawerProps> = ({
               <CartDrawerItem
                 key={item._id}
                 item={item}
-                removeItem={removeCartItem}
+                removeItem={removeItem}
               />
             ))
           ) : (

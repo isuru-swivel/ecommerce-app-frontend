@@ -17,13 +17,11 @@ const CartItem: React.FC<ICartItemProps> = ({
   return (
     <div className="grid grid-cols-[40%,20%,20%,20%] gap-4">
       <div className="flex items-center p-2 font-semibold">
-        <span className="mr-4">
-          <CloseCircleOutlined onClick={() => handleRemove(item._id)} />
-        </span>
-        <span className="mr-4">
-          <img src={item.image} alt={item.name} width={100} height={100} />
-        </span>
-        <span>{item.name}</span>
+        <CloseCircleOutlined
+          className="mr-4"
+          onClick={() => handleRemove(item._id)}
+        />
+        <span className="whitespace-nowrap truncate">{item.name}</span>
       </div>
       <div className="flex items-center justify-center p-2 font-semibold">
         LKR {item.price}

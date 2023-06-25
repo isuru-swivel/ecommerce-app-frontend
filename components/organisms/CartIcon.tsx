@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { Badge } from "antd";
+import Link from "next/link";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { useAppSelector } from "@/hooks";
 
-const CartIcon = () => {
-  const { cartItems, totalPrice } = useAppSelector((state) => state.cart);
+interface ICartIconProps {
+  itemsCount: number;
+  totalPrice: number;
+}
 
+const CartIcon: React.FC<ICartIconProps> = ({ itemsCount, totalPrice }) => {
   return (
     <div className="flex items-center justify-end">
-      <div>
-        <Badge count={cartItems.length} color={"blue"} showZero>
-          <ShoppingCartOutlined style={{ fontSize: 35 }} />
-        </Badge>
-      </div>
+      <Link href="/cart">
+        <div>
+          <Badge count={itemsCount} color={"blue"} showZero>
+            <ShoppingCartOutlined style={{ fontSize: 35 }} />
+          </Badge>
+        </div>
+      </Link>
       <div className="ml-3">LKR {totalPrice}</div>
     </div>
   );

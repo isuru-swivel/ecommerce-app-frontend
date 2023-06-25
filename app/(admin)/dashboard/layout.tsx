@@ -54,8 +54,8 @@ export default function DashboardLayout({
 
   return (
     <html lang="en">
-      <body>
-        <Layout>
+      <body className="min-h-screen">
+        <Layout className="dashboard-layout">
           <Sider
             breakpoint="lg"
             collapsedWidth="0"
@@ -95,9 +95,7 @@ export default function DashboardLayout({
                 {children}
               </div>
             </Content>
-            <Footer style={{ textAlign: "center" }}>
-              Ant Design ©2023 Created by Ant UED
-            </Footer>
+            <Footer style={{ textAlign: "center" }}>Ecommerce App ©2023</Footer>
           </Layout>
         </Layout>
       </body>

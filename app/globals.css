@@ -2,16 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-.vertical-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.drawer_cart_item {
+    margin-bottom: 13px !important;
 }
 
-.drawer-card-item-close {
-    position: relative;
-    z-index: 1000;
-    top: -52px;
-    left: 297px;
-    font-size: 20px;
+.drawer_cart_item_body {
+    height: 85px !important;
+}
+
+.dashboard-layout {
+    min-height: 100vh !important;
+}
+
+.dashboard-page {
+    min-height: 78vh !important;
 }

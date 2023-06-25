@@ -13,7 +13,7 @@ const CraftsPage = () => {
   const { loading, crafts } = useAppSelector((state) => state.craft);
 
   useEffect(() => {
-    dispatch(fetchCrafts());
+    dispatch(fetchCrafts("ALL"));
   }, [dispatch]);
 
   const handleDeleteCraft = (id: string) => {

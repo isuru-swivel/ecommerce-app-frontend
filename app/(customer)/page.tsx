@@ -9,10 +9,14 @@ export default function Home() {
 
   return (
     <main>
-      <div className="flex">
-        {crafts.map((craft) => (
+      <div className="flex flex-wrap">
+        {crafts?.map((craft) => (
           <Link href={`/craft/${craft._id}`} key={craft._id}>
-            <CraftCard craft={craft} />
+            <CraftCard
+              image={craft.image}
+              name={craft.name}
+              price={craft.price}
+            />
           </Link>
         ))}
       </div>

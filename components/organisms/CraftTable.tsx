@@ -71,7 +71,13 @@ const CraftTable: React.FC<ICraftTableProps> = ({
 
   return (
     <div className="mt-4">
-      <Table dataSource={crafts} columns={columns} loading={loading} />
+      <Table
+        dataSource={crafts}
+        // @ts-ignore
+        columns={columns}
+        loading={loading}
+        rowKey={(record) => record._id}
+      />
     </div>
   );
 };

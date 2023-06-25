@@ -10,12 +10,15 @@ const initialState: ICraftState = {
   error: null,
 };
 
-export const fetchCrafts = createAsyncThunk("craft/fetchCrafts", async () => {
-  try {
-    const { data } = await axios.get("/crafts");
-    return data;
-  } catch (error) {}
-});
+export const fetchCrafts = createAsyncThunk(
+  "craft/fetchCrafts",
+  async (searchTerm: string) => {
+    try {
+      const { data } = await axios.get("/crafts?search=" + searchTerm);
+      return data;
+    } catch (error) {}
+  }
+);
 
 export const fetchCraftById = createAsyncThunk(
   "craft/fetchCraftById",

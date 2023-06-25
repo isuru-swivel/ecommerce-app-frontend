@@ -1,27 +1,25 @@
 import React from "react";
-import { ICraft } from "@/types";
 import { Card } from "antd";
-import cart from "@/components/templates/Cart";
 
 const { Meta } = Card;
 
 interface ICraftCardProps {
-  craft: ICraft;
+  image: string;
+  name: string;
+  price: number;
 }
 
-const CraftCard: React.FC<ICraftCardProps> = ({ craft }) => {
+const CraftCard: React.FC<ICraftCardProps> = ({ image, price, name }) => {
   return (
     <Card
-      className="mx-2"
+      className="m-2"
       hoverable
-      style={{ width: 360 }}
-      cover={<img alt="example" src={craft.image} />}
+      style={{ width: 320 }}
+      cover={<img alt="craft-image" src={image} style={{ height: 300 }} />}
     >
       <Meta
-        title={<div className="font-semibold text-xl">{craft.name}</div>}
-        description={
-          <div className="font-semibold text-lg">LKR {craft.price}</div>
-        }
+        title={<div className="font-semibold text-xl">{name}</div>}
+        description={<div className="font-semibold text-lg">LKR {price}</div>}
       />
     </Card>
   );

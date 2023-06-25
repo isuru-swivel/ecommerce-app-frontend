@@ -6,8 +6,7 @@ const withAuth = (WrappedComponent: React.JSXElementConstructor<any>) => {
   // eslint-disable-next-line react/display-name
   return function (props: React.JSX.IntrinsicAttributes) {
     const router = useRouter();
-    // const { isAuthenticated } = useAppSelector((state) => state.auth);
-    const isAuthenticated = true;
+    const { isAuthenticated } = useAppSelector((state) => state.auth);
 
     if (isAuthenticated) {
       // @ts-ignore
