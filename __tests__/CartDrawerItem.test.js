@@ -40,7 +40,7 @@ describe("CartDrawerItem", () => {
     render(<CartDrawerItem item={craft} removeItem={mockFunction} />);
 
     const buttonElement = screen.getByLabelText("close-circle");
-    const result = fireEvent.click(buttonElement);
+    fireEvent.click(buttonElement);
 
     expect(mockFunction).toHaveBeenCalled();
   });

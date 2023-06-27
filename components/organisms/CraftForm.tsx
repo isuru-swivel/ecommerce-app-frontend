@@ -60,10 +60,6 @@ const CraftForm: React.FC<CraftFormProps> = ({
     setImage(null);
   };
 
-  const handleClose = () => {
-    setImageUrl(null);
-  };
-
   const handleFinish = (values: any) => {
     const formData = new FormData();
     // @ts-ignore

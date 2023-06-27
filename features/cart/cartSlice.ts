@@ -31,12 +31,14 @@ const cartSlice = createSlice({
         (cartItem) => cartItem._id === action.payload
       );
 
+      if (!item) return;
+
       state.cartItems = state.cartItems.filter(
         (item) => item._id !== action.payload
       );
 
       //total price
-      state.totalPrice -= item!.price * item!.quantity;
+      state.totalPrice -= item.price * item.quantity;
     },
     updateQuantity: (state, action) => {
       const item = state.cartItems.find(
