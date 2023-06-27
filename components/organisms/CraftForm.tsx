@@ -143,7 +143,11 @@ const CraftForm: React.FC<CraftFormProps> = ({
               },
             ]}
           >
-            <Upload beforeUpload={handleUpload} showUploadList={false}>
+            <Upload
+              beforeUpload={handleUpload}
+              showUploadList={false}
+              fileList={[]}
+            >
               {!image && (
                 <Button icon={<UploadOutlined />}>Click to Upload</Button>
               )}
