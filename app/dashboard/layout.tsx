@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ShopOutlined,
   StockOutlined,
@@ -11,6 +11,7 @@ import { useAppDispatch } from "@/hooks";
 import { Layout, Menu, theme } from "antd";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/features/auth/authSlice";
+import useAuth from "@/hooks/useAuth";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -18,6 +19,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const { isAuthenticated, redirect } = useAuth();
+
+  useEffect(() => {
+    // //if user is not authenticated, redirect to login page
+    if (!isAuthenticated) redirect();
+  }, [isAuthenticated, redirect]);
 
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -47,6 +55,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     dispatch(logOut());
     router.replace("/login");
   };
+
+  if (!isAuthenticated) return;
 
   return (
     <html lang="en">

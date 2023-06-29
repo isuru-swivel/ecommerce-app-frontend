@@ -1,3 +1,5 @@
+"use client";
+
 import { useAppSelector } from "@/hooks/index";
 import { useRouter } from "next/navigation";
 

@@ -6,17 +6,11 @@ import CraftForm from "@/components/organisms/CraftForm";
 import { useParams, useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { editCraft, fetchCraftById } from "@/features/craft/craftSlice";
-import useAuth from "@/hooks/useAuth";
 
 const EditCraftPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { id } = useParams();
-
-  const { isAuthenticated, redirect } = useAuth();
-
-  // //if user is not authenticated, redirect to login page
-  if (!isAuthenticated) redirect();
 
   useEffect(() => {
     dispatch(fetchCraftById(id));
