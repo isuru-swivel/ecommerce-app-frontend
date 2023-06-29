@@ -2,9 +2,8 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
-import withAuth from "@/components/HOC/withAuth";
 import { Button } from "antd";
-import { CraftTable } from "@/components";
+import CraftTable from "@/components/organisms/CraftTable";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { fetchCrafts, deleteCraftById } from "@/features/craft/craftSlice";
 
@@ -36,4 +35,4 @@ const CraftsPage = () => {
   );
 };
 
-export default withAuth(CraftsPage);
+export default CraftsPage;

@@ -1,5 +1,6 @@
-import { CartItems, CartTotalPriceCard } from "@/components";
 import { useAppSelector } from "@/hooks";
+import CartItems from "@/components/organisms/CartItems";
+import CartTotalPriceCard from "@/components/organisms/CartTotalPriceCard";
 
 const Cart = () => {
   const { cartItems, totalPrice } = useAppSelector((state) => state.cart);

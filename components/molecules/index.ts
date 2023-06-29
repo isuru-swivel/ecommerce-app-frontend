@@ -1,3 +1,1 @@
-import SearchBox from "./SearchBox";
-
-export { SearchBox };
+export * from "./SearchBox";

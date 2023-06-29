@@ -1,7 +1,7 @@
 import React from "react";
 import { Divider } from "antd";
 import { ICartItem } from "@/types";
-import { CartItem } from "@/components";
+import CartItem from "@/components/organisms/CartItem";
 import { useAppDispatch } from "@/hooks";
 import { removeFromCart, updateQuantity } from "@/features/cart/cartSlice";
 

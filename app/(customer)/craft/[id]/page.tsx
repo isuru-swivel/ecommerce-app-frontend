@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { CraftDetails, CartDrawer } from "@/components";
+import CraftDetails from "@/components/templates/CraftDetails";
+import CartDrawer from "@/components/organisms/CartDrawer";
 import { addToCart, removeFromCart } from "@/features/cart/cartSlice";
 const { fetchCraftById } = require("@/features/craft/craftSlice");
 

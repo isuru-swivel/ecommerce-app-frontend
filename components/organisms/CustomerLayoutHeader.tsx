@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import React, { useState, useEffect } from "react";
-import { SearchBox, CartIcon } from "@/components";
+import SearchBox from "@/components/molecules/SearchBox";
+import CartIcon from "@/components/organisms/CartIcon";
 import { fetchCrafts } from "@/features/craft/craftSlice";
 
 const CustomerLayoutHeader = () => {

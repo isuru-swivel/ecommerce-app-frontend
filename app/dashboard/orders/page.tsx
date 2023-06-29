@@ -1,7 +1,6 @@
 "use client";
 
-import { OrdersTable } from "@/components";
-import withAuth from "@/components/HOC/withAuth";
+import OrdersTable from "@/components/organisms/OrdersTable";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { useEffect } from "react";
 import { getAllOrders } from "@/features/order/orderSlice";
@@ -22,4 +21,4 @@ const OrdersPage = () => {
   );
 };
 
-export default withAuth(OrdersPage);
+export default OrdersPage;

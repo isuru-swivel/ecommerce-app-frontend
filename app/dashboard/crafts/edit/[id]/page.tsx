@@ -2,7 +2,7 @@
 
 import { message } from "antd";
 import { useEffect } from "react";
-import { CraftForm } from "@/components";
+import CraftForm from "@/components/organisms/CraftForm";
 import { useParams, useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { editCraft, fetchCraftById } from "@/features/craft/craftSlice";

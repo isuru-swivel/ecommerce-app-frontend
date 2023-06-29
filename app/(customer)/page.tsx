@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { CraftCard } from "@/components";
 import { useAppSelector } from "@/hooks";
+import CraftCard from "@/components/organisms/CraftCard";
 
 export default function Home() {
   const { crafts } = useAppSelector((state) => state.craft);

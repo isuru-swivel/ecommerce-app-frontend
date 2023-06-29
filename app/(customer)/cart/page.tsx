@@ -1,6 +1,6 @@
 "use client";
 
-import { Cart } from "@/components";
+import Cart from "@/components/templates/Cart";
 
 const CartPage = () => {
   return <Cart />;

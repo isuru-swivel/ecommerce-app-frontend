@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CustomerLayoutHeader } from "@/components";
+import CustomerLayoutHeader from "@/components/organisms/CustomerLayoutHeader";
 
 const CustomerLayout = ({ children }: { children: React.ReactNode }) => {
   return (

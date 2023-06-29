@@ -1,7 +1,8 @@
-import { OrderStats, CraftSoldCountList } from "@/components";
 import { useAppSelector, useAppDispatch } from "@/hooks";
 import { useEffect } from "react";
 import { getAnalytics } from "@/features/order/orderSlice";
+import OrderStats from "@/components/organisms/OrderStats";
+import CraftSoldCountList from "@/components/organisms/CraftSoldCountList";
 
 const Analytics = () => {
   const dispatch = useAppDispatch();

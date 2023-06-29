@@ -3,7 +3,8 @@ import { useRouter } from "next/navigation";
 import { clearCart } from "@/features/cart/cartSlice";
 import { addOrder } from "@/features/order/orderSlice";
 import { useAppSelector, useAppDispatch } from "@/hooks";
-import { CheckoutForm, OrderDetailsCard } from "@/components";
+import CheckoutForm from "@/components/organisms/CheckoutForm";
+import OrderDetailsCard from "@/components/organisms/OrderDetailsCard";
 
 const Checkout = () => {
   const router = useRouter();

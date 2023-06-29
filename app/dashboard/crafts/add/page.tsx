@@ -1,7 +1,7 @@
 "use client";
 
 import { message } from "antd";
-import { CraftForm } from "@/components";
+import CraftForm from "@/components/organisms/CraftForm";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { addNewCraft } from "@/features/craft/craftSlice";

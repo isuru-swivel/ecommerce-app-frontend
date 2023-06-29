@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "antd";
 import { ICraft } from "@/types";
-import { AddToCartForm } from "@/components";
+import AddToCartForm from "@/components/organisms/AddToCartForm";
 
 interface ICraftDetailsProps {
   craft: ICraft | null;

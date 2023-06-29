@@ -1,7 +1,6 @@
 "use client";
 
-import withAuth from "@/components/HOC/withAuth";
-import { Analytics } from "@/components";
+import Analytics from "@/components/templates/Analytics";
 
 const AnalyticsPage = () => {
   return (
@@ -11,4 +10,4 @@ const AnalyticsPage = () => {
   );
 };
 
-export default withAuth(AnalyticsPage);
+export default AnalyticsPage;

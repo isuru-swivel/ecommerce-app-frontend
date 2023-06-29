@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { ICartItem } from "@/types";
-import { CartDrawerItem } from "@/components";
+import CartDrawerItem from "@/components/organisms/CartDrawerItem";
 import { Drawer, Divider, Button, Empty } from "antd";
 
 interface ICartDrawerProps {

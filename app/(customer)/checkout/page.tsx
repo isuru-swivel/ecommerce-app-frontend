@@ -1,6 +1,6 @@
 "use client";
 
-import { Checkout } from "@/components";
+import Checkout from "@/components/templates/Checkout";
 
 const CheckoutPage = () => {
   return (
