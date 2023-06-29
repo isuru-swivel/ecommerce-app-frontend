@@ -8,14 +8,6 @@ const Analytics = () => {
   const dispatch = useAppDispatch();
   const { analytics } = useAppSelector((state) => state.order);
 
-  const {
-    totalSales,
-    totalCraftsSold,
-    totalOrders,
-    craftsSoldCount,
-    topFiveCraftsSold,
-  } = analytics;
-
   useEffect(() => {
     dispatch(getAnalytics());
   }, [dispatch]);
@@ -23,22 +15,22 @@ const Analytics = () => {
   return (
     <div>
       <OrderStats
-        totalSales={totalSales}
-        totalOrders={totalOrders}
-        totalSoldCrafts={totalCraftsSold}
+        totalSales={analytics?.totalSales}
+        totalOrders={analytics?.totalOrders}
+        totalSoldCrafts={analytics?.totalCraftsSold}
       />
 
       <div className="grid grid-cols-2 mt-4">
         <div className="flex justify-center">
           <CraftSoldCountList
             title="Top 5 best-selling crafts"
-            items={topFiveCraftsSold}
+            items={analytics?.topFiveCraftsSold}
           />
         </div>
         <div className="flex justify-center">
           <CraftSoldCountList
             title="The count of all crafts sold"
-            items={craftsSoldCount}
+            items={analytics?.craftsSoldCount}
           />
         </div>
       </div>

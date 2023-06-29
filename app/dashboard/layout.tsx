@@ -14,11 +14,7 @@ import { logOut } from "@/features/auth/authSlice";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -101,4 +97,6 @@ export default function DashboardLayout({
       </body>
     </html>
   );
-}
+};
+
+export default DashboardLayout;

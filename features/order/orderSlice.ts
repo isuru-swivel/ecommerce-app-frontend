@@ -22,7 +22,7 @@ export const addOrder = createAsyncThunk(
       const { data } = await axios.post("/orders", payload);
       return data;
     } catch (e: any) {
-      return rejectWithValue(e.response.data.message);
+      throw rejectWithValue(e.response.data.message);
     }
   }
 );

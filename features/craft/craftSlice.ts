@@ -37,7 +37,7 @@ export const addNewCraft = createAsyncThunk(
       const { data } = await axios.post("/crafts", payload);
       return data;
     } catch (e: any) {
-      return rejectWithValue(e.response.data.message);
+      throw rejectWithValue(e.response.data.message);
     }
   }
 );
@@ -49,7 +49,7 @@ export const editCraft = createAsyncThunk(
       const { data } = await axios.put(`/crafts/${params.id}`, params.payload);
       return data;
     } catch (e: any) {
-      return rejectWithValue(e.response.data.message);
+      throw rejectWithValue(e.response.data.message);
     }
   }
 );
@@ -61,7 +61,7 @@ export const deleteCraftById = createAsyncThunk(
       await axios.delete(`/crafts/${craftId}`);
       return craftId;
     } catch (e: any) {
-      return rejectWithValue(e.response.data.message);
+      throw rejectWithValue(e.response.data.message);
     }
   }
 );

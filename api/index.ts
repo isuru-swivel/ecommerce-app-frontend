@@ -4,10 +4,6 @@ import { logOut } from "@/features/auth/authSlice";
 
 const axiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-  },
 });
 
 // Add a request interceptor
@@ -32,7 +28,7 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response && error.response.status === 401) {
-      //if access token is expired or invalid then log out
+      // if access token is expired or invalid then log out
       store.dispatch(logOut());
       window.location.replace("/login");
     }

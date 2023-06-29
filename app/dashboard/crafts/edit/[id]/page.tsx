@@ -6,11 +6,17 @@ import CraftForm from "@/components/organisms/CraftForm";
 import { useParams, useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { editCraft, fetchCraftById } from "@/features/craft/craftSlice";
+import useAuth from "@/hooks/useAuth";
 
 const EditCraftPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { id } = useParams();
+
+  const { isAuthenticated, redirect } = useAuth();
+
+  // //if user is not authenticated, redirect to login page
+  if (!isAuthenticated) redirect();
 
   useEffect(() => {
     dispatch(fetchCraftById(id));
@@ -18,19 +24,22 @@ const EditCraftPage = () => {
 
   const { loading, craft } = useAppSelector((state) => state.craft);
 
-  const handleEditCraft = (values: any) => {
-    dispatch(
-      editCraft({
-        id,
-        payload: values,
-      })
-    ).then((result) => {
-      if (result.meta.requestStatus === "fulfilled") {
-        router.push("/dashboard/crafts");
-      } else {
-        message.error(result.payload);
+  const handleEditCraft = async (values: any) => {
+    try {
+      const result = await dispatch(
+        editCraft({
+          id,
+          payload: values,
+        })
+      );
+
+      if (result?.error) {
+        return message.error(result?.payload);
       }
-    });
+      router.push("/dashboard/crafts");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useAppDispatch } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { Button, Form, Input, message } from "antd";
 import { useRouter } from "next/navigation";
 import { login } from "@/features/auth/authSlice";
@@ -6,15 +6,18 @@ import { login } from "@/features/auth/authSlice";
 const LoginForm = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { loading } = useAppSelector((state) => state.auth.loading);
 
-  const onFinish = (values: any) => {
-    dispatch(login(values)).then((result) => {
-      if (result.meta.requestStatus === "fulfilled") {
-        router.push("/dashboard/crafts");
-      } else {
-        message.error(result.payload);
+  const onFinish = async (values: any) => {
+    try {
+      const result = await dispatch(login(values));
+      if (result?.error) {
+        return message.error(result?.payload);
       }
-    });
+      router.push("/dashboard/crafts");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -47,7 +50,7 @@ const LoginForm = () => {
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={loading}>
             Login
           </Button>
         </Form.Item>
