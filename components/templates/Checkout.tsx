@@ -11,7 +11,7 @@ const Checkout = () => {
   const dispatch = useAppDispatch();
   const { cartItems, totalPrice } = useAppSelector((state) => state.cart);
 
-  const handleCheckout = (data: any) => {
+  const handleCheckout = async (data: any) => {
     const orderItems = cartItems.map((item) => {
       return {
         craft: item._id,
@@ -25,18 +25,17 @@ const Checkout = () => {
       orderItems,
     };
 
-    dispatch(addOrder(payload))
-      .then((result) => {
-        if (result.meta.requestStatus === "fulfilled") {
-          dispatch(clearCart());
-          router.replace("/order/success");
-        } else {
-          return message.error(result.payload);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const result = await dispatch(addOrder(payload));
+      if (result?.error) {
+        return message.error(result.payload);
+      }
+      //if order is success clear cart and redirect to success page
+      dispatch(clearCart());
+      router.replace("/order/success");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

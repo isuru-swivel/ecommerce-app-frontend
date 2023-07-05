@@ -14,6 +14,7 @@ const LoginForm = () => {
       if (result?.error) {
         return message.error(result?.payload);
       }
+      //if login is success redirect dashboard craft list
       router.push("/dashboard/crafts");
     } catch (err) {
       console.error(err);

@@ -18,6 +18,7 @@ const AddCraftPage = () => {
       if (result?.error) {
         return message.error(result?.payload);
       }
+      //if craft is added successfully redirect to craft list
       router.push("/dashboard/crafts");
     } catch (err) {
       console.error(err);
